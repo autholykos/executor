@@ -33,7 +33,10 @@ impl Future for Yield {
 }
 
 async fn simple() -> i32 {
-    sleep::sleep(Duration::from_secs(5)).await;
+    let sleep5 = sleep::sleep(Duration::from_secs(5));
+    let sleep3 = sleep::sleep(Duration::from_secs(3));
+
+    join(sleep3, sleep5).await;
 
     let inner = Yield { yielded: false };
     inner.await;
