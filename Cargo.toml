@@ -8,3 +8,6 @@ edition = "2018"
 [dependencies]
 futures = "0.3"
 cooked-waker="5"
+crossbeam-channel="0.5"
+pin-project="1"
+snowflake="1.3"

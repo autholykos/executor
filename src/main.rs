@@ -1,6 +1,8 @@
 #![allow(unused_imports)]
+#![feature(once_cell)]
 
 mod executor;
+mod sleep;
 
 use std::{
     future::Future,
@@ -31,6 +33,8 @@ impl Future for Yield {
 }
 
 async fn simple() -> i32 {
+    sleep::sleep(Duration::from_secs(5)).await;
+
     let inner = Yield { yielded: false };
     inner.await;
 
